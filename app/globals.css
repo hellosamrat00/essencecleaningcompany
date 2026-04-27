@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+/* ============================================================
+   THEME — Tailwind v4 token registration
+   All brand tokens flow from here into both CSS vars and
+   Tailwind's utility layer automatically.
+   ============================================================ */
+@theme {
+  /* ── Colors ── */
+  --color-brand-green:        #05261b;
+  --color-brand-green-dark:   #02110c;
+  --color-brand-green-mid:    #76d957;
+
+  --color-brand-gold:         #e1b560;
+  --color-brand-gold-dark:    #c9963e;
+
+  --color-brand-cream:        #f7f8f5;
+  --color-brand-cream-dark:   #eef0ea;
+
+  /* ── Typography ── */
+  --font-sans:    var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-heading), ui-serif, Georgia, serif;
+
+  /* ── Transitions ── */
+  --ease-snappy: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Animations ── */
+  --animate-marquee:    marquee 18s linear infinite;
+  --animate-fade-in:    fadeInUp 0.7s var(--ease-snappy) forwards;
+  --animate-spin-slow:  spin-slow 8s linear infinite;
+}
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-brand-green);
+  background: var(--color-brand-cream);
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.section-label {
+  font-size: 0.75rem;       /* 12px */
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-brand-green);
+
+  /* Optional tint variant: add class `section-label--light` on dark backgrounds */
+  &.section-label--light {
+    color: var(--color-brand-cream);
+    opacity: 0.7;
+  }
+}
+
+/* ============================================================
+   BUTTONS
+   ── Base shared styles live in [btn], variants extend it.
+   ============================================================ */
+[class^="btn-"],
+[class*=" btn-"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;              /* 8px */
+  padding: 0.875rem 2rem;   /* 14px 32px */
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.9375rem;     /* 15px */
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 0.25s var(--ease-snappy),
+    color            0.25s var(--ease-snappy),
+    transform        0.25s var(--ease-snappy),
+    box-shadow       0.25s var(--ease-snappy);
+
+  &:focus-visible {
+    outline: 2px solid var(--color-brand-gold);
+    outline-offset: 3px;
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
+.btn-primary {
+  background: var(--color-brand-green);
+  color: var(--color-brand-cream);
+
+  &:hover {
+    background: var(--color-brand-green-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-btn);
+  }
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-brand-green);
+  border: 2px solid var(--color-brand-green);
+  padding-block: calc(0.875rem - 2px); /* compensate for border */
+
+  &:hover {
+    background: var(--color-brand-green);
+    color: var(--color-brand-cream);
+  }
+}
+
+.btn-gold {
+  background: var(--color-brand-gold);
+  color: var(--color-brand-green-dark);
+
+  &:hover {
+    background: var(--color-brand-gold-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold);
+  }
+}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+.service-card {
+  border: 1px solid var(--color-brand-cream-dark);
+  border-radius: var(--radius-card);
+  padding: 1.75rem 1.5rem;  /* 28px 24px */
+  background: #fff;
+  transition:
+    border-color 0.3s var(--ease-snappy),
+    box-shadow   0.3s var(--ease-snappy),
+    transform    0.3s var(--ease-snappy);
+
+  &:hover {
+    border-color: var(--color-brand-green);
+    box-shadow: var(--shadow-card);
+    transform: translateY(-4px);
+  }
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-item {
+  border-bottom: 1px solid var(--color-brand-cream-dark);
+  padding-block: 1.25rem; /* 20px */
+}
+
+/* ============================================================
+   ANIMATION HELPERS
+   (prefer Tailwind's `animate-*` utilities — these are
+    escape hatches for non-Tailwind markup)
+   ============================================================ */
+.marquee-track  { animation: var(--animate-marquee); }
+.animate-fade-in { animation: var(--animate-fade-in); }
+.animate-spin-slow { animation: var(--animate-spin-slow); }
