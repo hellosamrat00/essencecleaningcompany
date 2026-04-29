@@ -7,7 +7,7 @@ import FAQ from "@/components/FAQ";
 import HowItWorks from "@/components/HowItWorks";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
-import StatsBanner from "@/components/StatsBanner";
+import Team from "@/components/Team";
 
 export default function Home() {
   return (
@@ -17,11 +17,10 @@ export default function Home() {
       <Services />
       <Marquee />
       <About />
-      <StatsBanner />
       <FAQ />
       <HowItWorks />
+      <Team />
       <Testimonials />
-
       <Footer />
     </main>
   );

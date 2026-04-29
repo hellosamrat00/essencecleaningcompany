@@ -13,46 +13,50 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24" style={{ backgroundColor: "var(--color-brand-cream)" }}>
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
         {/* Left */}
         <div>
           <p className="section-label mb-4">FAQ</p>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold leading-tight mb-6" style={{ color: "var(--color-brand-green)" }}>
             You Have{" "}
-            <span className="text-[#2D8C4E]">Questions,</span>
+            <span style={{ color: "var(--color-brand-gold)" }}>Questions,</span>
             <br />
             We Have Answers
           </h2>
-          <p className="text-gray-500 mb-8 leading-relaxed">
+          <p className="mb-8 leading-relaxed" style={{ color: "var(--color-brand-green)", opacity: 0.8 }}>
             Find answers to the most common questions about our cleaning services. Can't find what you're looking for? Contact us directly.
           </p>
-          <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
+          <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border" style={{ borderColor: "rgba(5, 38, 27, 0.1)" }}>
             <img
-              src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=700&q=80"
+              src="/cleaning-team.jpg"
               alt="Cleaning professional"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-[#2D8C4E]/20"/>
+            <div className="absolute inset-0 bg-black/10"/>
           </div>
         </div>
 
         {/* Right - FAQs */}
-        <div className="pt-8">
+        <div className="pt-8 space-y-4">
           {faqs.map((faq, i) => (
-            <div key={i} className="faq-item">
+            <div key={i} className="faq-item rounded-xl p-6 bg-white shadow-sm border transition-all" style={{ borderColor: open === i ? "var(--color-brand-gold)" : "transparent" }}>
               <button
                 className="w-full flex items-center justify-between text-left gap-4 group"
                 onClick={() => setOpen(open === i ? null : i)}
               >
-                <span className={`font-semibold ${open === i ? "text-[#2D8C4E]" : "text-gray-800"} group-hover:text-[#2D8C4E] transition-colors`}>
+                <span className="font-semibold transition-colors" style={{ color: open === i ? "var(--color-brand-green)" : "var(--color-brand-green)", opacity: open === i ? 1 : 0.9 }}>
                   {faq.q}
                 </span>
-                <span className={`text-2xl flex-shrink-0 transition-transform ${open === i ? "rotate-45 text-[#2D8C4E]" : "text-gray-400"}`}>+</span>
+                <span className="text-2xl flex-shrink-0 transition-transform" style={{ color: open === i ? "var(--color-brand-gold)" : "rgba(5,38,27,0.3)", transform: open === i ? "rotate(45deg)" : "none" }}>+</span>
               </button>
-              {open === i && (
-                <p className="mt-3 text-gray-500 text-sm leading-relaxed pr-8">{faq.a}</p>
-              )}
+              <div 
+                className={`grid transition-all duration-300 ease-in-out ${open === i ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0'}`}
+              >
+                <div className="overflow-hidden">
+                  <p className="text-sm leading-relaxed pr-8" style={{ color: "var(--color-brand-green)", opacity: 0.7 }}>{faq.a}</p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

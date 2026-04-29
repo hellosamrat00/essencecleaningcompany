@@ -6,26 +6,26 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Team", href: "#team" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Team", href: "/team" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
     <nav className="fixed top-5 left-4 right-4 lg:left-1/2 lg:right-auto lg:-translate-x-1/2 lg:w-full lg:max-w-7xl z-50 rounded-full bg-white/80 backdrop-blur-2xl backdrop-saturate-200 shadow-[0_8px_32px_rgba(0,0,0,0.04)] border border-white/50">
-      <div className="px-8 py-3.5 flex items-center justify-between">
+      <div className="px-6 py-2.5 lg:px-8 lg:py-3.5 flex items-center justify-between">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-12 h-12 rounded-full bg-brand-green flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-md">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <Link href="/" className="flex items-center gap-2 lg:gap-3 group">
+          <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-brand-green flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-md">
+            <svg className="w-5 h-5 lg:w-[26px] lg:h-[26px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2L3 7L4.5 12L12 17L19.5 12L21 7L12 2Z" fill="var(--color-brand-gold)"/>
               <path d="M12 22L4.5 17L12 12L19.5 17L12 22Z" fill="var(--color-brand-gold)"/>
             </svg>
           </div>
-          <span className="font-heading text-3xl font-bold text-brand-green tracking-tight">Essence</span>
+          <span className="font-heading text-2xl lg:text-3xl font-bold text-brand-green tracking-tight">Essence</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -45,7 +45,7 @@ export default function Navbar() {
         {/* CTA Button */}
         <div className="hidden lg:flex items-center">
           <Link
-            href="#contact"
+            href="/contact"
             className="font-heading relative inline-flex items-center gap-2.5 px-7 py-3 rounded-full text-sm font-semibold overflow-hidden group"
             style={{
               background: "var(--color-brand-gold)",
@@ -97,7 +97,7 @@ export default function Navbar() {
           ))}
           <div className="mt-2 pt-5 border-t border-gray-200/60">
             <Link
-              href="#contact"
+              href="/contact"
               className="font-heading relative w-full inline-flex items-center justify-center gap-2.5 py-4 rounded-full text-base font-semibold overflow-hidden group"
               style={{
                 background: "var(--color-brand-gold)",
